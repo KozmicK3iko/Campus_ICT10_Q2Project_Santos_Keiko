@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Glee Club Checker</title>
+
+    <link rel="stylesheet" href="https://pyscript.net/releases/2026.7.3/core.css">
+    <script type="module" src="https://pyscript.net/releases/2026.7.3/core.js"></script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600;800&family=Rajdhani:wght@400;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        * { box-sizing: border-box; }
+        body {
+            margin: 0;
+            min-height: 100vh;
+            padding: 30px 15px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            color: #eaf8ff;
+            font-family: 'Rajdhani', sans-serif;
+            background: radial-gradient(ellipse at top, #123d69 0%, transparent 55%), linear-gradient(145deg, #071426, #020711 80%);
+        }
+        header { width: 100%; max-width: 440px; text-align: center; margin-bottom: 22px; }
+        .reactor { width: 48px; height: 48px; margin: 0 auto 18px; border: 3px solid #00d9ff; border-radius: 50%; background: radial-gradient(circle, #b9faff, #00aaff 55%, #0755a5); box-shadow: 0 0 12px #00d9ff, 0 0 35px rgba(0, 217, 255, 0.55); }
+        h1 { margin: 0; color: #54eaff; font-family: 'Orbitron', sans-serif; font-size: clamp(22px, 5vw, 30px); letter-spacing: 2px; text-shadow: 0 0 15px rgba(0, 217, 255, 0.5); }
+        header p { margin-top: 12px; color: #a8c8e6; font-size: 16px; letter-spacing: 1px; }
+        main { width: 100%; max-width: 360px; padding: 25px; background: rgba(11, 29, 51, 0.88); border: 1px solid #1685c7; border-top: 3px solid #00d9ff; border-radius: 12px; box-shadow: 0 0 25px rgba(0, 153, 255, 0.15); }
+        .form-title { margin: 0 0 18px; color: #ffffff; text-align: center; font-family: 'Orbitron', sans-serif; font-size: 14px; letter-spacing: 1px; }
+        input[type="text"] { width: 100%; padding: 12px 14px; margin-bottom: 13px; color: #ffffff; font-family: 'Rajdhani', sans-serif; font-size: 16px; background: #061322; border: 1px solid #285173; border-radius: 6px; outline: none; }
+        input[type="text"]:focus { border-color: #00d9ff; box-shadow: 0 0 12px rgba(0, 217, 255, 0.2); }
+        input[type="button"] { width: 100%; padding: 12px; margin-top: 4px; color: #04111e; font-family: 'Orbitron', sans-serif; font-size: 12px; font-weight: 800; letter-spacing: 2px; text-transform: uppercase; background: linear-gradient(100deg, #00d9ff, #278bff); border: none; border-radius: 6px; cursor: pointer; transition: 0.25s ease; }
+        input[type="button"]:hover { background: linear-gradient(100deg, #8af4ff, #65b2ff); box-shadow: 0 0 18px rgba(0, 217, 255, 0.4); transform: translateY(-2px); }
+        .result { margin-top: 18px; padding: 13px; border-radius: 6px; text-align: center; font-size: 15px; font-weight: 700; line-height: 1.5; overflow-wrap: anywhere; }
+        .success { color: #80ffdb; background: rgba(0, 255, 190, 0.08); border-left: 3px solid #35ffcb; }
+        .error { color: #ffb6c8; background: rgba(255, 65, 115, 0.08); border-left: 3px solid #ff5277; }
+        .back-menu-btn { margin-top: 20px; width: 100%; padding: 10px; background: #0a2a82; color: #ffffff; border: 2px solid #ffd700; border-radius: 6px; font-family: 'Orbitron', sans-serif; font-size: 11px; letter-spacing: 1px; cursor: pointer; transition: 0.2s; }
+        .back-menu-btn:hover { background: #125ce0; transform: scale(1.03); }
+        footer { margin-top: 20px; color: #789bb9; text-align: center; font-size: 12px; letter-spacing: 1px; }
+        footer span { color: #39dfff; }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="reactor"></div>
+        <h1>GLEE CLUB</h1>
+        <p>Sing your heart out and have the bestest fun! :D</p>
+    </header>
+
+    <main>
+        <h2 class="form-title">MEMBER VERIFICATION</h2>
+        <form onsubmit="return false;">
+            <input type="text" id="first_name" placeholder="Enter your first name" autocomplete="given-name">
+            <input type="text" id="last_name" placeholder="Enter your last name" autocomplete="family-name">
+            <input type="button" py-click="candidate_checker" value="Enter">
+        </form>
+        <div id="result" class="result" hidden></div>
+    </main>
+
+    <div style="width: 100%; max-width: 360px;">
+        <button class="back-menu-btn" onclick="window.location.href='index.html'">← BACK TO SONIC MENU</button>
+    </div>
+
+    <footer>
+        <span>© 2026</span> Glee Club • Member Verification System
+    </footer>
+
+    <script type="py" src="./main.py"></script>
+</body>
+</html>

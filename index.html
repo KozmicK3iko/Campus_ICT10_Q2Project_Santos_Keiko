@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project Q2</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  
+    <video autoplay muted loop playsinline id="bg-video">
+        <source src="sonic_bg.mp4.mp4" type="video/mp4">
+    </video>
+
+   
+    <nav class="sonic-menu">
+      
+        <button class="sonic-btn" onclick="openCreatorModal()">
+            <span class="ring"></span>
+            <span class="btn-text">Meet the Creator</span>
+        </button>
+
+       
+        <button class="sonic-btn" onclick="window.location.href='club_checker.html'">
+            <span class="ring"></span>
+            <span class="btn-text">Club Checker</span>
+        </button>
+
+      
+        <button class="sonic-btn" onclick="openTextModal('facts')">
+            <span class="ring"></span>
+            <span class="btn-text">Fun facts</span>
+        </button>
+
+
+        <button class="sonic-btn" onclick="openTextModal('element')">
+            <span class="ring"></span>
+            <span class="btn-text">Element Checker</span>
+        </button>
+    </nav>
+
+    
+    <div id="modal-overlay" class="modal-overlay hidden" onclick="closeModal()">
+        <div class="modal-box" onclick="event.stopPropagation()">
+            <h2 id="modal-title">Title</h2>
+
+            
+            <img id="creator-img" src="Canva_MeetCreator.png" alt="Meet the Creator" class="canva-preview hidden">
+
+            <p id="modal-text">Details go here.</p>
+            <button class="close-btn" onclick="closeModal()">BACK TO MENU</button>
+        </div>
+    </div>
+
+    <script>
+        const CONTENT_DATA = {
+            facts: {
+                title: "SONIC FUN FACTS",
+                text: "Sonic's original code name was 'Mr. Needlemouse', and he was designed to run faster than the speed of sound!"
+            },
+            element: {
+                title: "ELEMENT CHECKER",
+                text: "Ready to inspect elements! Link your next interactive tool right here."
+            }
+        };
+
+        function openCreatorModal() {
+            document.getElementById("modal-title").textContent = "MEET THE CREATOR";
+            document.getElementById("creator-img").classList.remove("hidden");
+            document.getElementById("modal-text").classList.add("hidden");
+            document.getElementById("modal-overlay").classList.remove("hidden");
+        }
+
+        function openTextModal(topic) {
+            const data = CONTENT_DATA[topic];
+            document.getElementById("modal-title").textContent = data.title;
+            document.getElementById("creator-img").classList.add("hidden");
+            const textEl = document.getElementById("modal-text");
+            textEl.textContent = data.text;
+            textEl.classList.remove("hidden");
+            document.getElementById("modal-overlay").classList.remove("hidden");
+        }
+
+        function closeModal() {
+            document.getElementById("modal-overlay").classList.add("hidden");
+        }
+    </script>
+</body>
+</html>
